@@ -1,0 +1,28 @@
+﻿@model PoorMansReddit.Models.Subreddit
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <h4>AWW Posts</h4>
+    <hr />
+    @for(int i=0; i < 10; i++)
+    {
+        string link = "https://www.reddit.com" + Model.data.children[i].data.permalink;
+<dl class="row">
+    <dd class="col-sm-20">
+        @(i+1). @Model.data.children[i].data.title
+    </dd>
+    <dd class="col-sm-10">
+        Author: @Model.data.children[i].data.author
+    </dd>
+    <dd class="col-sm-10">
+        <a href="@link">Full Post on Reddit</a>
+    </dd>
+    <dd class="col-sm-10">
+        <img height="@Model.data.children[i].data.thumbnail_height" width="@Model.data.children[i].data.thumbnail_width" src="@Model.data.children[i].data.thumbnail" />
+    </dd>
+</dl>
+    }
+</div>
